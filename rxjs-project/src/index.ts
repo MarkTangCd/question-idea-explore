@@ -5,4 +5,5 @@ import './first';
 // import './subjects';
 // import './scheduler';
 // import './learnrxjs/combineAll';
-import './learnrxjs/combineLatest';
+// import './learnrxjs/combineLatest';
+import './learnrxjs/concat';
