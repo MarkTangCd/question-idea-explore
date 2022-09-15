@@ -6,4 +6,5 @@ import './first';
 // import './scheduler';
 // import './learnrxjs/combineAll';
 // import './learnrxjs/combineLatest';
-import './learnrxjs/concat';
+// import './learnrxjs/concat';
+import './learnrxjs/concatAll';
