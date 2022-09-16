@@ -2,6 +2,9 @@
   "name": "blog",
   "description": "eleventy blog",
   "version": "1.0.0",
+  "dependency": {
+    "ascii": "*"
+  },
   "scripts": {
     "build": "eleventy --input=./src --output=../../dist/packages/blog",
     "serve": "eleventy --serve --input=./src --output=../../dist/packages/blog"
