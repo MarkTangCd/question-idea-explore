@@ -1,3 +1,4 @@
+import { OrderedList, ListItem } from '@chakra-ui/react';
 import { Todo } from '@org/data';
 import './todos.module.css';
 
@@ -7,11 +8,11 @@ export interface TodosProps {
 
 export function Todos(props: TodosProps) {
   return (
-    <ul>
+    <OrderedList>
       {props.todos.map((t, index) => (
-        <li key={index} className={'todo'}>{t.title}</li>
+        <ListItem key={index} className={'todo'}>{t.title}</ListItem>
       ))}
-    </ul>
+    </OrderedList>
   );
 }
 
