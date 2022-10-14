@@ -5,3 +5,9 @@
  * .container {
  * }
 */
+.deleted {
+  display: none;
+}
+.finished {
+  text-decoration: line-through;
+}
