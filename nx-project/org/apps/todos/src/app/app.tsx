@@ -56,7 +56,7 @@ export const App = () => {
   }
 
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setText(e.target.value);
+    setText(e.target.value);
   }
 
   return (
