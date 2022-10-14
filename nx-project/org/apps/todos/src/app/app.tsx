@@ -18,6 +18,9 @@ export const App = () => {
   function addTodo() {
     fetch('/api/addTodo', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         text
       }),

@@ -4,9 +4,12 @@
  */
 
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import { addTodoRoutes } from './app/todos';
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
