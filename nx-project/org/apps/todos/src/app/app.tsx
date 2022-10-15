@@ -1,72 +1,33 @@
-import { useState, useEffect } from 'react';
-import { Button, Input, Text, useToast } from '@chakra-ui/react';
-import { Todo } from '@org/data';
+import { useEffect } from 'react';
+import { Button, Input, Text } from '@chakra-ui/react';
 import { Todos } from '@org/ui';
+import { useStore } from '@org/store';
 
 import styled from './app.module.css';
 
 export const App = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [finished, setFinished] = useState<string[]>([]);
-  const [deleted, setDeleted] = useState<string[]>([]);
-  const [text, setText] = useState('');
-  const toast = useToast();
+  const text = useStore((state) => state.text);
+  const todos = useStore((state) => state.todos);
+  const deleted = useStore((state) => state.deleted);
+  const finished = useStore((state) => state.finished);
+  const onGetTodos = useStore((state) => state.onGetTodos);
+  const onAddTodo = useStore((state) => state.onAddTodo);
+  const onTextChange = useStore((state) => state.onTextChange);
+  const onFinish = useStore((state) => state.onFinish);
+  const onDelete = useStore((state) => state.onDelete);
 
   useEffect(() => {
-    fetch('/api/todos')
-      .then((_) => _.json())
-      .then(setTodos);
+    onGetTodos();
   }, []);
-
-  const onDelete = (title: string) => {
-    const newArr = deleted.concat([title]);
-    setDeleted(newArr);
-    toast({
-      title: 'Note:',
-      description: 'This todo deleted',
-      status: 'success'
-    });
-  }
-
-  const onFinished = (title: string) => {
-    const newArr = finished.concat([title]);
-    setFinished(newArr);
-    toast({
-      title: 'Note:',
-      description: 'This todo is done',
-      status: 'success'
-    });
-  }
-
-  const addTodo = () => {
-    fetch('/api/addTodo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text
-      }),
-    })
-      .then((_) => _.json())
-      .then((newTodo) => {
-        setTodos([...todos, newTodo]);
-        setText('');
-      });
-  }
-
-  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-  }
 
   return (
     <div className={styled['wrapper']}>
       <Text fontSize='6xl'>Todos</Text>
-      <Todos todos={todos} finished={finished} deleted={deleted} onDelete={onDelete} onFinish={onFinished} />
+      <Todos todos={todos} finished={finished} deleted={deleted} onDelete={onDelete} onFinish={onFinish} />
       <div className={styled['todo-text']}>
         <Input value={text} onChange={onTextChange} placeholder='Please input the text of todo' />
       </div>
-      <Button id={'add-todo'} onClick={addTodo}>
+      <Button id={'add-todo'} onClick={() => onAddTodo(text)}>
         Add Todo
       </Button>
     </div>

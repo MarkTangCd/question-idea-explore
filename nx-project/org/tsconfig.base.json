@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@org/data": ["libs/data/src/index.ts"],
+      "@org/store": ["libs/store/src/index.ts"],
       "@org/ui": ["libs/ui/src/index.ts"]
     }
   },
