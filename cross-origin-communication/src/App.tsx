@@ -1,21 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import IndexPage from './pages';
-import TestPage from './pages/test';
+import Index2Page from './pages/index2';
+import TestPage from './pages/bridge';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>Cross Origin Communication</h1>
-        <div>
-          <ConnectButton />
-        </div>
-      </header>
       <div>
         <Routes>
           <Route index path='/' element={<IndexPage />} />
+          <Route path='/index2' element={<Index2Page />} />
           <Route path='/test' element={<TestPage />} />
         </Routes>
       </div>
